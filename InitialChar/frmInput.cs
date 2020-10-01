@@ -27,8 +27,8 @@ namespace InitialChar
 			}
 			else if (rdoInit_Medial.Checked)
 			{
-				double dValue = decimal.ToDouble(numWeight.Value);
-				frm = new frmOutput(txtInput.Text, dValue);
+				int iValue = decimal.ToInt32(numWeight.Value);
+				frm = new frmOutput(txtInput.Text, iValue);
 				frm.Show();
 			}
 		}

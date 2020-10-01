@@ -9,23 +9,38 @@ namespace InitialChar
 	public class ComFunc
 	{
 
-		public static T GetWetghtReturn<T>(double dWeight, T rtnItem1, T rtnItem2)
+		public static T GetWetghtReturn<T>(int iWeight1, int iWeight2, T rtnItem1, T rtnItem2)
 		{
 			Random random = new Random(Guid.NewGuid().GetHashCode());
-			double dWeightSum = dWeight + 1.0;
-			double dValue = random.NextDouble() * dWeightSum;
+			int iWeightSum = iWeight1 + iWeight2;
+			int iValue = random.Next(iWeightSum);
 
 
-			switch (dValue)
+			switch (iValue)
 			{
-				case double d when (0.0 <= d && d < 1.0):
-					return rtnItem2;
-				case double d when (1.0 <= d && d <= dWeightSum):
+				case int i when (0 <= i && i < iWeight1):
 					return rtnItem1;
+				case int i when (iWeight1 <= i && i <= iWeightSum):
+					return rtnItem2;
 				default:
 					//Unexpected	
 					throw new Exception("Unexpected Error: T GetWetghtReturn<T>(int iWeightSum, T rtnItem1, T rtnItem2) ");
 			}
 		}
+
+		public static T GetWetghtReturn<T>(double dWeight, T rtnItem1, T rtnItem2)
+		{
+			double dRoundWeight = Math.Round(dWeight * 100);
+			int iWeight = Convert.ToInt32(dRoundWeight);
+
+			return GetWetghtReturn(iWeight, 100, rtnItem1, rtnItem2);
+		}
+
+		public static T GetWetghtReturn<T>(int iWeight, T rtnItem1, T rtnItem2)
+		{
+			return GetWetghtReturn(iWeight, 100 - iWeight, rtnItem1, rtnItem2);
+		}
+
+
 	}
 }

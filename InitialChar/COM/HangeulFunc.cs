@@ -56,6 +56,27 @@ namespace InitialChar
 			return sResult;
 		}
 
+		public static string GetOneSyllableString(string sInputString, int iWeight)
+		{
+			string sResult = "";
+			foreach (char cInput in sInputString)
+			{
+				char[] cSyllables = GetAllSyllables(cInput);
+
+				if (cSyllables is null)
+				{
+					sResult += cInput;
+				}
+				else
+				{
+					int iIndex = ComFunc.GetWetghtReturn<int>(iWeight, 0, 1);
+					sResult += cSyllables[iIndex];
+				}
+			}
+
+			return sResult;
+		}
+
 		/// <summary>
 		/// Code from http://blog.naver.com/PostView.nhn?blogId=sunho0371&logNo=220948604603
 		/// </summary>

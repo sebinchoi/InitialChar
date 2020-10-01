@@ -51,6 +51,12 @@ public partial class frmOutput : MyForm
 			this.InputString = sInputString;
 		}
 
+		public frmOutput(string sInputString, int iWeight) : this()
+		{
+			txtOutput.Text = HangeulFunc.GetOneSyllableString(sInputString, iWeight);
+			this.InputString = sInputString;
+		}
+
 
 		public frmOutput(string sInputString, OutPutMode mode) : this()
 		{

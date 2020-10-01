@@ -86,28 +86,12 @@ namespace InitialChar
 			// 
 			// numWeight
 			// 
-			this.numWeight.DecimalPlaces = 1;
-			this.numWeight.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            65536});
-			this.numWeight.Location = new System.Drawing.Point(267, 9);
-			this.numWeight.Maximum = new decimal(new int[] {
-            30,
-            0,
-            0,
-            0});
-			this.numWeight.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
+			this.numWeight.Location = new System.Drawing.Point(295, 9);
 			this.numWeight.Name = "numWeight";
 			this.numWeight.Size = new System.Drawing.Size(41, 21);
 			this.numWeight.TabIndex = 4;
 			this.numWeight.Value = new decimal(new int[] {
-            1,
+            50,
             0,
             0,
             0});
@@ -118,9 +102,9 @@ namespace InitialChar
 			this.lblWeight.AutoSize = true;
 			this.lblWeight.Location = new System.Drawing.Point(194, 12);
 			this.lblWeight.Name = "lblWeight";
-			this.lblWeight.Size = new System.Drawing.Size(71, 12);
+			this.lblWeight.Size = new System.Drawing.Size(99, 12);
 			this.lblWeight.TabIndex = 3;
-			this.lblWeight.Text = "* 자음 비중:";
+			this.lblWeight.Text = "* 자음 비중(%) : ";
 			this.lblWeight.Visible = false;
 			// 
 			// rdoInit_Medial
