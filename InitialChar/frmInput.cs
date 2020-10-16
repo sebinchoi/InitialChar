@@ -19,18 +19,21 @@ namespace InitialChar
 		private void btnApply_Click(object sender, EventArgs e)
 		{
 			Form frm;
+			string sInputText = txtInput.Text;
+			string sSplitText = txtInput.SelectedText;
 
-			if (rdoInit.Checked)
-			{
-				frm = new frmOutput(txtInput.Text);
-				frm.Show();
-			}
-			else if (rdoInit_Medial.Checked)
+			if (rdoInit_Medial.Checked)
 			{
 				int iValue = decimal.ToInt32(numWeight.Value);
-				frm = new frmOutput(txtInput.Text, iValue);
-				frm.Show();
+				frm = new frmOutput(sInputText, iValue);
 			}
+			else
+			{
+				frm = new frmOutput(sInputText);
+			}
+
+			frm.Show();
+
 		}
 
 		private void txtInput_KeyPress(object sender, KeyPressEventArgs e)

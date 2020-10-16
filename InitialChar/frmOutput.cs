@@ -1,18 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
 namespace InitialChar
 {
 
-	public enum OutPutMode
-	{ 
-		Initial, Medial, Init_Medial
-	}
 public partial class frmOutput : MyForm
 	{
+		private static float fFontSize = 15;
+
 		public string InputString { get; private set; }
 		public int SelIndex
 		{
@@ -37,6 +36,8 @@ public partial class frmOutput : MyForm
 		public frmOutput()
 		{
 			InitializeComponent();
+
+			txtOutput.Font = new Font(txtOutput.Font.FontFamily, fFontSize);
 		}
 
 		public frmOutput(string sInputString) : this()
@@ -57,21 +58,6 @@ public partial class frmOutput : MyForm
 			this.InputString = sInputString;
 		}
 
-
-		public frmOutput(string sInputString, OutPutMode mode) : this()
-		{
-			switch (mode)
-			{
-				case OutPutMode.Initial:
-					break;
-				case OutPutMode.Medial:
-					break;
-				case OutPutMode.Init_Medial:
-					break;
-				default:
-					break;
-			}
-		}
 		private void txtOutput_KeyDown(object sender, KeyEventArgs e)
 		{
 			SetTextBoxProperty(e.KeyCode, (char)e.KeyValue);
@@ -147,6 +133,11 @@ public partial class frmOutput : MyForm
 					//unexpected error
 					break;
 			}
+		}
+
+		private void frmOutput_FormClosing(object sender, FormClosingEventArgs e)
+		{
+			fFontSize = txtOutput.Font.Size;
 		}
 	}
 }

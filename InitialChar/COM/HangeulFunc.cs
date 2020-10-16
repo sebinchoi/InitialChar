@@ -14,47 +14,7 @@ namespace InitialChar
 
 		public static ushort UNICODE_HANGEUL_BASE = 0xAC00;
 		public static ushort UNICODE_HANGEUL_LAST = 0xD79F;
-		public static string GetInitialsString(string sInput)
-		{
-			string sResult = "";
 
-			foreach (char cInput in sInput)
-			{
-				char[] cSyllables = GetAllSyllables(cInput);
-
-				if (cSyllables is null)
-				{
-					sResult += cInput;
-				}
-				else
-				{
-					sResult += cSyllables[0];
-				}
-			}
-
-			return sResult;
-		}
-
-		public static string GetOneSyllableString(string sInputString, double dWeight)
-		{
-			string sResult = "";
-			foreach (char cInput in sInputString)
-			{
-				char[] cSyllables = GetAllSyllables(cInput);
-
-				if (cSyllables is null)
-				{
-					sResult += cInput;
-				}
-				else
-				{
-					int iIndex = ComFunc.GetWetghtReturn<int>(dWeight, 0, 1);
-					sResult += cSyllables[iIndex];
-				}
-			}
-
-			return sResult;
-		}
 
 		public static string GetOneSyllableString(string sInputString, int iWeight)
 		{
@@ -69,12 +29,23 @@ namespace InitialChar
 				}
 				else
 				{
-					int iIndex = ComFunc.GetWetghtReturn<int>(iWeight, 0, 1);
+					int iIndex = ComFunc.GetWetghtReturn(iWeight, 0, 1);
 					sResult += cSyllables[iIndex];
 				}
 			}
 
 			return sResult;
+		}
+
+		public static string GetOneSyllableString(string sInputString, double dWeight)
+		{
+			int iWeight = Convert.ToInt32(Math.Round(dWeight * 100));
+			return GetOneSyllableString(sInputString, iWeight);
+		}
+
+		public static string GetInitialsString(string sInput)
+		{
+			return GetOneSyllableString(sInput, 100);
 		}
 
 		/// <summary>

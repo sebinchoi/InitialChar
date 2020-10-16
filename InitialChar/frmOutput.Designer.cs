@@ -30,7 +30,6 @@ namespace InitialChar
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmOutput));
 			this.txtOutput = new InitialChars.MyTextBox();
 			this.SuspendLayout();
 			// 
@@ -55,8 +54,8 @@ namespace InitialChar
 			this.ClientSize = new System.Drawing.Size(884, 561);
 			this.Controls.Add(this.txtOutput);
 			this.Name = "frmOutput";
-			this.ShowIcon = true;
 			this.Text = "";
+			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmOutput_FormClosing);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
