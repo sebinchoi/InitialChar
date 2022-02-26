@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:InitialChar"
+             x:Class="InitialChar.Input">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="100"/>
+                </Grid.ColumnDefinitions>
+                <StackLayout Grid.Column="0" Orientation="Horizontal" Spacing="30">
+                    <RadioButton x:Name="rdoInit" Content="초성" CheckedChanged="rdoInit_CheckedChanged"/>
+                    <RadioButton x:Name="rdoInit_Medial" Content="초성+중성" CheckedChanged="rdoInit_Medial_CheckedChanged"/>
+                    <Grid x:Name="grdWeight" IsVisible="false" RowSpacing="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Label x:Name="lblWeight" IsVisible="false" Grid.Column="0" Text="비중" VerticalOptions="Center"/>
+                        <local:MyTextbox x:Name="txtWeight" Text="50" Grid.Column="1" TextChanged="txtWeight_TextChanged" HorizontalTextAlignment="Start" VerticalOptions="CenterAndExpand"/>
+                        <Button x:Name="btnDecWeight" Grid.Column="2" Text="-" Clicked="btnDecWeight_Clicked" VerticalOptions="Center"/>
+                        <Button x:Name="btnIncWeight" Grid.Column="3" Text="+" Clicked="btnIncWeight_Clicked" VerticalOptions="Center"/>
+                    </Grid>
+                </StackLayout>
+                <Button x:Name="btnApply" Grid.Column="1" Text="적용" Clicked="btnApply_Clicked"/>
+            </Grid>
+            <ScrollView Orientation="Vertical"  Grid.Row="1">
+                <local:MyTextbox x:Name="txtInput" TextChanged="txtInput_TextChanged"/>
+            </ScrollView>
+        </Grid>
+
+    </ContentPage.Content>
+</ContentPage>
